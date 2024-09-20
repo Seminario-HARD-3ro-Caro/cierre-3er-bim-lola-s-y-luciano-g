@@ -1,13 +1,12 @@
-// Ejercicio evaluatorio 3er bimestre
 /*
   Integrantes
-    Nombre:
-    Apellido:
-    Curso:
+    Nombre: Lola
+    Apellido: Sabetay
+    Curso: E
     
-    Nombre:
-    Apellido:
-    Curso:
+    Nombre: Luciano
+    Apellido: Girotti
+    Curso: B
   
 Congisgnas
   Conexionado:
@@ -15,10 +14,10 @@ Congisgnas
     Se debe conectar tambien, un pulsador que permita recibir información de un usuario.
     Indicar a continuación los pines a los cuales se conectó cada elemento y el valor de resistencias utilizado:
       Pines:
-        Boton:
-        LED1:
-        LED2:
-        LED3:
+        Boton: 4
+        LED1:11
+        LED2:10
+        LED3:9
         LED4:
       Valor:
         R_boton:
@@ -44,13 +43,35 @@ Congisgnas
         IMPORTANTE: si el nro es mayor a 15 se deberá enviar un mensaje de error. 
 
 */ 
+#define LED_1 11
+#define LED_2 10
+#define LED_3 7
+#define LED_4 8
+#define BUTTON 4
 
-
-void setup() {
-  // Configuración del arduino
+void setup()
+{
+  pinMode(LED_1, OUTPUT);
+  pinMode(LED_2, OUTPUT);
+  pinMode(LED_3, OUTPUT);
+  pinMode(LED_4, OUTPUT);
+  pinMode(BUTTON, INPUT_PULLUP);
 }
 
-void loop() {
-  // Logica del programa
+void loop()
+{
+  byte buttonState = digitalRead(BUTTON);
 
+  if (buttonState == LOW) {   //Si el  boton esta low que se porensan los leds
+    digitalWrite(LED_1, HIGH);
+    digitalWrite(LED_2, HIGH);
+    digitalWrite(LED_3, HIGH);
+    digitalWrite(LED_4, HIGH);
+  }
+  else {
+    digitalWrite(LED_1, LOW);
+    digitalWrite(LED_2, LOW);
+    digitalWrite(LED_3, LOW);
+    digitalWrite(LED_4, LOW);
+  }
 }
